@@ -20,8 +20,10 @@
                                             <%= f.hidden_field :quantity, value: 1 %>
                                             <%= f.submit "Add to cart" %>
                                         <% end %>
+
                                     
                                     </div>  
+                                
                                 </div>
                             </div>
                         </div>
@@ -29,5 +31,7 @@
                 <% end %>
             </div>
         </div>
+        <%= link_to "Show cart", cart_path , class: 'primary' %>
     </div>
+    
 </div>
