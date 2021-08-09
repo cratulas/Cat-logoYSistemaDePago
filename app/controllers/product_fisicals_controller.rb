@@ -64,6 +64,6 @@ class ProductFisicalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_fisical_params
-      params.require(:product_fisical).permit(:name, :size, :description, :stock, :price, :sku)
+      params.require(:product_fisical).permit(:name, :size, :description, :stock, :price, :sku, {category_ids: []})
     end
 end

@@ -64,6 +64,6 @@ class ProductDigitalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_digital_params
-      params.require(:product_digital).permit(:name, :description, :stock, :price, :sku)
+      params.require(:product_digital).permit(:name, :description, :stock, :price, :sku, {category_ids: []})
     end
 end
