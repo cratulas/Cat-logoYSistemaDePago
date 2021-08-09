@@ -1,0 +1,2 @@
+module ProductFisicalsHelper
+end

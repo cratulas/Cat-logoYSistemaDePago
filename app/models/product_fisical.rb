@@ -1,0 +1,2 @@
+class ProductFisical < ApplicationRecord
+end
