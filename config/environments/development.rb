@@ -52,6 +52,17 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+      paypal_options = {
+      login: "sb-d8u8s7089839_api1.business.example.com",
+      password: "MB9UN33WEDNQEUJV",
+      signature: "AaJHGLAdDj9X3X5RoVTTz4UWvpzEAfI9HUBBLK-tdithVSmI.EQMRnix"
+      }
+      
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

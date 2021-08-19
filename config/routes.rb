@@ -12,6 +12,13 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  resource :cart, only: [:show, :update] do
+    member do
+      post :pay_with_paypal
+      get :process_paypal_payment
+    end
+  end
+  
   resource :cart, only: [:show, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

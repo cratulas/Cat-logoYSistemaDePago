@@ -4,15 +4,16 @@ class Order < ApplicationRecord
   belongs_to :user
 
   has_many :order_items
-  has_many :products, through: :order_items
+  has_many :product_digitals, through: :order_items
   validates :number, uniqueness: true
 
+
   def add_product(product_id, quantity)
-      product = ProductDigital.find(product_id)
-      if product && (product.stock > 0)
-      order_items.create(product_digital_id: product.id, quantity: quantity,
-      price: product.price)
-      end
+    product = ProductDigital.find(product_id)
+    if product && (product.stock > 0)
+      order_items.create(product_digital_id: product.id, quantity: quantity, price: product.price)
+      compute_total
+    end
   end
   
   def generate_number(size)
@@ -33,4 +34,13 @@ class Order < ApplicationRecord
   def hash_size
       9
   end
+
+  def compute_total
+    sum = 0
+    order_items.each do |item|
+      sum += item.price
+    end
+    update_attribute(:total, sum)
+  end
+  
 end
